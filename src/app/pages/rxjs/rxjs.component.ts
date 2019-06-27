@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
-import { retry, map } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscriber, Subscription } from 'rxjs';
+import { retry, map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxjs',
   templateUrl: './rxjs.component.html',
   styles: []
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
 
 
+  subscripcion: Subscription;
 
   constructor() {
 
 
     //primer callback es cuando el recive informacion  ( un next ) segundo error y tercero termino
-    this.regresaObservable().subscribe(numero => {
+   this.subscripcion =  this.regresaObservable().subscribe(numero => {
       console.log('Subs', numero);
     }, err => console.log('error', err),
       () => console.log('termino')
@@ -25,6 +26,11 @@ export class RxjsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(): void {
+    console.log('la pagina se va a cerrar');
+    this.subscripcion.unsubscribe();
   }
 
   regresaObservable(): Observable<any> {
@@ -39,10 +45,10 @@ export class RxjsComponent implements OnInit {
 
         observer.next(salida);
 
-        if (contador === 10) {
-          observer.complete();
-          clearInterval(intervalo);
-        };
+        // if (contador === 10) {
+        //   observer.complete();
+        //   clearInterval(intervalo);
+        // };
 
         // if (contador === 3) {
         //   // clearInterval(intervalo);
@@ -51,9 +57,16 @@ export class RxjsComponent implements OnInit {
       }, 1000);
     }).pipe(
 
-      map( resp =>{
-        return resp.valor+1;
+      map( res => res.valor),
+      filter((valor,index)=>{
+        // console.log('Res', res,index);
+        if( (valor%2) === 1){
+          return true;
+        }else{
+          return false
+        }
       })
+
 
     )
   }
