@@ -46,7 +46,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         PAGES_ROUTES,
         FormsModule,
         ChartsModule,
-        CommonModule
+        CommonModule,
     ]
 })
 export class PagesModule { }
