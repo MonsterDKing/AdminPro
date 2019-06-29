@@ -8,15 +8,20 @@ export class SidebarService {
       titulo:'Principal',
       icono:'mdi mdi-gauge',
       submenu:[
-        {
-          titulo:'Dashboard', url:'/dashboard'
-        },
-        {
-          titulo:'ProgressBar', url:'/progress'
-        },
-        {
-          titulo:'Graficas', url:'/graficas1'
-        }
+        {titulo: 'Inicio', url: '/dashboard'},
+        {titulo: 'ProgressBar', url: '/progress'},
+        {titulo: 'Graficas', url: '/graficas1'},
+        {titulo: 'Punto de venta', url: '/ventas'}
+      ]
+    },
+    {
+      titulo:'Productos',
+      icono:'mdi mdi-package',
+      submenu:[
+        {titulo: 'Lista de productos', url: '/productos'},
+        {titulo: 'Agregar Productos', url: '/agregar-productos'},
+        {titulo: 'Modificar Productos', url: '/dashboard'}
+
       ]
     }
   ]

@@ -8,6 +8,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
+import { ProductosComponent } from './productos/productos.component';
+import { AgregarComponent } from './productos/agregar/agregar.component';
 
 
 
@@ -18,6 +20,8 @@ const pagesRoutes: Routes = [
         canActivate:[LoginGuardGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent, data:{titulo:'Dashboard'} },
+            { path: 'productos', component: ProductosComponent, data:{titulo:'Productos'}},
+            { path: 'agregar-productos', component: AgregarComponent, data:{titulo:'Agregar Productos'}},
             { path: 'progress', component: ProgressComponent,data:{titulo:'Progress'}  },
             { path: 'graficas1', component: Graficas1Component,data:{titulo:'Graficas'}  },
             { path: 'promesas', component: PromesasComponent,data:{titulo:'Promesas'} },

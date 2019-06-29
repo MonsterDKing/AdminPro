@@ -1,0 +1,86 @@
+<div class="row animated fadeIn">
+    <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Buscar producto por nombre</h3>
+        <input #input (keyup.enter)="buscarProductonombre( input.value)" type="text" class="form-control" placeholder="Buscar Producto">
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Buscar producto por codigo</h3>
+          <input #inputcodigo (keyup.enter)="buscarProductoPorCodigo(inputcodigo.value)" type="text" class="form-control" placeholder="Buscar Producto">
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Buscar producto por codigo de barras</h3>
+            <input #inputcodigobarras (keyup.enter)="buscarProductoPorCodigoBarras( inputcodigobarras.value)" type="text" class="form-control" placeholder="Buscar Producto">
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+    <div class="alert alert-warning text-center">
+      <strong>Cargando</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Espero por favor</span>
+    </div>
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Productos Registrados</h3>
+        <table class="table table-hover">
+          <thead>
+            <th>Nombre</th>
+            <th>Precio Descuento</th>
+            <th>Precio General</th>
+            <th>Marca</th>
+            <th>Codigo de barras</th>
+            <th>Codigo</th>
+            <th>Cantidad</th>
+            <th>Modificar</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of productos">
+              <td>{{p.nombre}}</td>
+              <td><p style="color:red">{{p.preciodescuento | currency:"MXN":"symbol"}}</p></td>
+              <td><p style="color: red">{{p.preciogeneral | currency:"MXN":"symbol"}}</p></td>
+              <td>{{p.marca.nombre}}</td>
+              <td>{{p.codigodebarras}}</td>
+              <td>{{p.codigo}}</td>
+              <td>{{p.cantidad}}</td>
+              <td style='white-space: nowrap'>
+                <button class="btn btn-primary">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+        <button (click)="cambiarPaginacion(-1)" class="btn btn-secondary">
+          Anteriores
+        </button>
+        <button (click)="cambiarPaginacion(1)" class="btn btn-secondary">
+            Siguiente
+          </button>
+      </div>
+    </div>
+  </div>
+</div>

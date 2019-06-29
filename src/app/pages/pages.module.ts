@@ -10,7 +10,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
@@ -19,6 +19,8 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProductosComponent } from './productos/productos.component';
+import { AgregarComponent } from './productos/agregar/agregar.component';
 
 
 //temporal
@@ -33,7 +35,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProductosComponent,
+        AgregarComponent
 
     ],
     exports: [
@@ -47,6 +51,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         FormsModule,
         ChartsModule,
         CommonModule,
+        ReactiveFormsModule
     ]
 })
 export class PagesModule { }

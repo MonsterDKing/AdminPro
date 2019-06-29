@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario.model';
+import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map  } from 'rxjs/operators';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 
@@ -39,7 +39,7 @@ export class UsuarioService {
         this.usuario = usuario;
         this.token = res.token;
         return true;
-      })
+      }),
     );
   }
 
